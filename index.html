@@ -149,6 +149,52 @@
       <a href="#" onclick="toggleCart()">Корзина (<span id="cart-count">0</span>)</a>
     </nav>
   </header>
+<script>
+  const cart = [];
+  let total = 0;
+
+  function addToCart(item, price) {
+    cart.push({ name: item, price });
+    document.getElementById('cart-count').innerText = cart.length;
+    updateCartDisplay();
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    document.getElementById('cart-count').innerText = cart.length;
+    updateCartDisplay();
+  }
+
+  function updateCartDisplay() {
+    const cartList = document.getElementById('cart-items');
+    cartList.innerHTML = '';
+    total = 0;
+    cart.forEach((item, index) => {
+      const li = document.createElement('li');
+      li.innerHTML = `${index + 1}. ${item.name} — ${item.price} ₸ 
+        <button onclick="removeFromCart(${index})" style="margin-left:10px; color:red; background:none; border:none; cursor:pointer;">Удалить</button>`;
+      cartList.appendChild(li);
+      total += item.price;
+    });
+    document.getElementById('total-price').innerText = total;
+  }
+
+  function toggleCart() {
+    const cartBox = document.getElementById('cart');
+    cartBox.style.display = cartBox.style.display === 'block' ? 'none' : 'block';
+  }
+
+  function placeOrder() {
+    if (cart.length === 0) {
+      alert("Корзина пуста!");
+      return;
+    }
+    alert("Спасибо за заказ! Мы свяжемся с вами для подтверждения.");
+    cart.length = 0;
+    updateCartDisplay();
+    document.getElementById('cart-count').innerText = 0;
+  }
+</script>
 
   <section class="hero">
     <h2>Лучшие товары для ваших питомцев</h2>
