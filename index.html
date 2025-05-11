@@ -147,10 +147,6 @@
       <a href="#products">Товары</a>
       <a href="#contact">Контакты</a>
       <a href="#" onclick="toggleCart()">Корзина (<span id="cart-count">0</span>)</a>
-        <button onclick="placeOrder()" style="margin-top: 15px; padding: 10px 16px; background-color: #3d8361; color: white; border: none; cursor: pointer;">
-      Оформить заказ
-    </button>
-  </div>
     </nav>
   </header>
 <script>
@@ -305,6 +301,9 @@
     <h3>Корзина</h3>
     <ul id="cart-items"></ul>
     <p><strong>Итого: <span id="total-price">0</span> ₸</strong></p>
+      <button onclick="placeOrder()" style="margin-top: 15px; padding: 10px 16px; background-color: #3d8361; color: white; border: none; cursor: pointer;">
+      Оформить заказ
+    </button>
   </div>
 
   <section class="contact" id="contact">
