@@ -150,8 +150,7 @@
     </nav>
   </header>
 <script>
-  const cart = [<button onclick="placeOrder()" style="margin-top: 15px; padding: 10px 16px; background-color: #3d8361; color: white; border: none; border-radius: 8px; cursor: pointer;">Оформить заказ</button>
-];
+  const cart = [];
   let total = 0;
 
   function addToCart(item, price) {
@@ -195,6 +194,11 @@
     updateCartDisplay();
     document.getElementById('cart-count').innerText = 0;
   }
+  .cart
+   <button onclick="placeOrder()" style="margin-top: 15px; padding: 10px 16px; background-color: #3d8361; color: white; border: none; cursor: pointer;">
+    Оформить заказ
+  </button>
+</div>
 </script>
 
   <section class="hero">
