@@ -51,11 +51,66 @@
       color: #2e7d32;
       text-decoration: none;
       font-weight: 600;
-      transition: color 0.3s ease, transform 0.2s ease;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease;
+      position: relative;
     }
     nav a:hover {
       color: #1b5e20;
       transform: translateY(-2px);
+      background-color: #f0f4f0;
+    }
+    nav a[onclick="openFavoritesModal()"] {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    nav a[onclick="openFavoritesModal()"] i.fa-heart {
+      font-size: 20px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    nav a[onclick="openFavoritesModal()"]:hover i.fa-heart {
+      color: #e91e63;
+      animation: pulse 0.5s ease-in-out;
+    }
+    nav a[onclick="openFavoritesModal()"] span#favorites-count {
+      background-color: #e91e63;
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 12px;
+      min-width: 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    nav a[onclick="openFavoritesModal()"]:hover span#favorites-count {
+      transform: scale(1.1);
+    }
+    nav a[onclick="openFavoritesModal()"]::after {
+      content: 'Избранное';
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #2e7d32;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, top 0.3s ease;
+    }
+    nav a[onclick="openFavoritesModal()"]:hover::after {
+      opacity: 1;
+      top: -40px;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
     }
     .hero {
       background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('header.gif') center/cover no-repeat;
@@ -755,6 +810,9 @@
       nav a {
         margin: 0;
       }
+      nav a[onclick="openFavoritesModal()"]::after {
+        display: none;
+      }
       .hero h2 {
         font-size: 34px;
       }
@@ -792,10 +850,10 @@
       <h1>PetShop</h1>
     </div>
     <nav aria-label="Основная навигация">
+      <a href="#" onclick="openFavoritesModal()" aria-label="Открыть избранное"><i class="fas fa-heart"></i> (<span id="favorites-count">0</span>)</a>
       <a href="#"><i class="fas fa-home"></i> Главная</a>
       <a href="#products"><i class="fas fa-paw"></i> Товары</a>
       <a href="#contact"><i class="fas fa-phone-alt"></i> Контакты</a>
-      <a href="#" onclick="openFavoritesModal()" aria-label="Открыть избранное"><i class="fas fa-heart"></i> Избранное (<span id="favorites-count">0</span>)</a>
       <a href="#" onclick="toggleCart()" aria-label="Открыть корзину"><i class="fas fa-shopping-cart"></i> Корзина (<span id="cart-count">0</span>)</a>
     </nav>
   </header>
