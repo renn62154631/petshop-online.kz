@@ -29,6 +29,9 @@
       top: 0;
       z-index: 100;
     }
+   header {
+  transition: transform 0.3s ease;
+}
     .logo {
       display: flex;
       align-items: center;
@@ -1725,6 +1728,28 @@ function renderReviews() {
 }
 
 document.addEventListener('DOMContentLoaded', renderReviews);
+let lastScrollY = window.scrollY;
+let header = document.querySelector('header');
+
+window.addEventListener('scroll', () => {
+  const currentScrollY = window.scrollY;
+
+  if (window.innerWidth <= 768) {
+    if (currentScrollY > lastScrollY && currentScrollY > 50) {
+      // Прокрутка вниз — скрыть шапку
+      header.style.transform = 'translateY(-100%)';
+    } else {
+      // Прокрутка вверх — показать шапку
+      header.style.transform = 'translateY(0)';
+    }
+  } else {
+    // На больших экранах всегда показывать
+    header.style.transform = 'translateY(0)';
+  }
+
+  lastScrollY = currentScrollY;
+});
+
   </script>
 </body>
 </html>
